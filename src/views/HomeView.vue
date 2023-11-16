@@ -10,7 +10,7 @@ const email = ref('')
 
 const fetchData = async () => {
   try {
-    const response = await axios
+    await axios
       .post(
         'http://192.168.0.104:3001/api/auth/login',
         {
