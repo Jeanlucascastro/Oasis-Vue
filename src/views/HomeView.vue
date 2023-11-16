@@ -12,10 +12,10 @@ const fetchData = async () => {
   try {
     await axios
       .post(
-        'http://192.168.0.104:3001/api/auth/login',
+        'http://192.168.0.104:8080/auth/login',
         {
-          email: "jean@gmail.com",
-          password: "^X9$jP0#aBHxD5"
+          login: "Castro",
+          password: "123456789"
         },
         {
           headers: {
@@ -26,13 +26,13 @@ const fetchData = async () => {
         }
       )
       .then((usuario) => {
-        user.value = usuario.data.usuario
-        token.value = usuario.data.token
-        password.value = usuario.data.password
-        email.value = usuario.data.email
-        sessionStorage.setItem('token-oasis', usuario.data.token)
-        sessionStorage.setItem('usuario-oasis', usuario.data.usuarioId)
-        sessionStorage.setItem('company-oasis', usuario.data.companyId)
+        // user.value = usuario.data.usuario
+        // token.value = usuario.data.token
+        // password.value = usuario.data.password
+        // email.value = usuario.data.email
+        // sessionStorage.setItem('token-oasis', usuario.data.token)
+        // sessionStorage.setItem('usuario-oasis', usuario.data.usuarioId)
+        // sessionStorage.setItem('company-oasis', usuario.data.companyId)
 
         console.log('company-oasis', usuario)
       })
