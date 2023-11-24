@@ -5,27 +5,35 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div class="page">
+    <header class="header">
+          <h2 class="margin">Oasis</h2>
+          <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/about/2">About</RouterLink>
+          <RouterLink to="/video/2">About2</RouterLink>
+    </header>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about/2">About</RouterLink>
-        <RouterLink to="/video/2">About2</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    <RouterView />
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+
+.header {
+  line-height: 0.5;
+    max-height: 100vh;
+    gap: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
 }
 
 .logo {
@@ -70,9 +78,9 @@ nav a:first-of-type {
   }
 
   header .wrapper {
-    display: flex;
+    /* display: flex;
     place-items: flex-start;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
   }
 
   nav {
