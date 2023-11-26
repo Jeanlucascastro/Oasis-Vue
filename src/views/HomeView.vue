@@ -1,53 +1,84 @@
-<script setup lang="ts">
+<script lang="ts">
 import TheWelcome from '../components/TheWelcome.vue'
 import axios from 'axios'
-import { ref, onMounted } from 'vue'
+import router from '@/router';
 
-const user = ref('')
-const token = ref('')
-const password = ref('')
-const email = ref('')
+export default {
+  data() {
+    return {
+      user: '',
+      password: '',
+      email: '',
+    };
+  },
+  methods: {
+    async login() {
+      try {
+        await axios
+          .post(
+            'http://192.168.0.104:8080/auth/login',
+            {
+              login: this.email,
+              password: this.password
+            },
+            {
+              headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+              }
+            }
+          )
+          .then((usuario) => {
+            localStorage.setItem('token-oasis', usuario.data.token)
+            localStorage.setItem('usuario-oasis', usuario.data.user.id)
+            router.push('/about')
+            console.log('company-oasis', usuario.data)
+          })
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    },
+  },
+};
 
-const fetchData = async () => {
-  try {
-    await axios
-      .post(
-        'http://192.168.0.104:8080/auth/login',
-        {
-          login: "Castro",
-          password: "123456789"
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-          }
-        }
-      )
-      .then((usuario) => {
-        // user.value = usuario.data.usuario
-        // token.value = usuario.data.token
-        // password.value = usuario.data.password
-        // email.value = usuario.data.email
-        // sessionStorage.setItem('token-oasis', usuario.data.token)
-        // sessionStorage.setItem('usuario-oasis', usuario.data.usuarioId)
-        // sessionStorage.setItem('company-oasis', usuario.data.companyId)
 
-        console.log('company-oasis', usuario)
-      })
-  } catch (error) {
-    console.error('Error fetching data:', error)
-  }
-}
-
-onMounted(() => {
-  fetchData()
-})
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <!-- <TheWelcome /> -->
+    <!-- <div class="card">
+      <div>Oasis Login</div>
+      <div>
+        Email
+        <input v-model="email" type="text" />
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+            aria-describedby="basic-addon1" v-model="email">
+        </div>
+      </div>
+      <div>
+        Senha
+        <input v-model="password" type="password" />
+        <input type="password" class="form-control" placeholder="Username" aria-label="Username"
+          aria-describedby="basic-addon1" v-model="password">
+      </div>
+      <div>
+        <button @click="login">Login</button>
+      </div>
+    </div> -->
+    <div class="mb-3">
+      <label for="formGroupExampleInput" class="text-default">Email</label>
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Email" v-model="email">
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput2" class="text-default">Senha</label>
+      <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Senha" v-model="password">
+    </div>
+    <div class="mb-3">
+      <button type="button" class="btn btn-outline-warning btn-sm" @click="login">Login</button>
+    </div>
+
   </main>
 </template>

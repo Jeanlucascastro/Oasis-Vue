@@ -47,7 +47,7 @@ export default {
   methods: {
 
     checkLogin() {
-      const token = sessionStorage.getItem('token-oasis')
+      const token = localStorage.getItem('token-oasis')
       
 
       if (!token) {
