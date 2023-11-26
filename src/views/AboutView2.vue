@@ -3,6 +3,10 @@
   <div class="about">
     <h1>This is an about page ABOUT 2 {{ loop }}</h1>
 
+    <div class="video-box-containder">
+      <VideoBox/>
+    </div>
+
     <button></button>
   </div>
 </template>
@@ -22,10 +26,14 @@ import { useRoute } from 'vue-router';
 import { ref } from 'vue';
 // import router from '@/router';
 import { useLoginMixin, type LoginMixin } from '../mixins/LoginMixin.js';
+import VideoBox from '../components/VideosBox.vue'
+
 
 const { checkLogin }: LoginMixin = useLoginMixin();
 export default {
-
+  components: {
+    VideoBox,
+  },
   name: 'App',
   data() {
     return {

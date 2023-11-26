@@ -4,6 +4,13 @@
   color: white
 }
 
+.global-box {
+  border: 1px solid #FF802B;
+  border-radius: 14px;
+  width: 100%;
+  height: 100%;
+}
+
 .router-link {
   text-decoration: none !important; /* Remove o sublinhado */
   color: inherit !important; /* Mantém a cor padrão do texto */
