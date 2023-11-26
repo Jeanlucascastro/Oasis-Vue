@@ -24,7 +24,6 @@
 <script lang="ts">
 import { useRoute } from 'vue-router';
 import { ref } from 'vue';
-// import router from '@/router';
 import { useLoginMixin, type LoginMixin } from '../mixins/LoginMixin.js';
 import VideoBox from '../components/VideosBox.vue'
 
