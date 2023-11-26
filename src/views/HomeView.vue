@@ -45,39 +45,46 @@ export default {
 
 </script>
 
+<style>
+main {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login {
+  width: 20vw;
+  height: 20vh;
+}
+
+.titulo {
+  display: flex;
+  justify-content: center;
+  font-size: 32px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+</style>
+
 <template>
   <main>
-    <!-- <TheWelcome /> -->
-    <!-- <div class="card">
-      <div>Oasis Login</div>
-      <div>
-        Email
-        <input v-model="email" type="text" />
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-            aria-describedby="basic-addon1" v-model="email">
-        </div>
+    <div class="login">
+      <div class="titulo text-default">
+        Login Oasis
       </div>
-      <div>
-        Senha
-        <input v-model="password" type="password" />
-        <input type="password" class="form-control" placeholder="Username" aria-label="Username"
-          aria-describedby="basic-addon1" v-model="password">
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="text-default">Email</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Email" v-model="email">
       </div>
-      <div>
-        <button @click="login">Login</button>
+      <div class="mb-3">
+        <label for="formGroupExampleInput2" class="text-default">Senha</label>
+        <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Senha" v-model="password">
       </div>
-    </div> -->
-    <div class="mb-3">
-      <label for="formGroupExampleInput" class="text-default">Email</label>
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Email" v-model="email">
-    </div>
-    <div class="mb-3">
-      <label for="formGroupExampleInput2" class="text-default">Senha</label>
-      <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Senha" v-model="password">
-    </div>
-    <div class="mb-3">
-      <button type="button" class="btn btn-outline-warning btn-sm" @click="login">Login</button>
+      <div class="mb-3">
+        <button type="button" class="btn btn-outline-warning btn-sm" @click="login">Login</button>
+      </div>
     </div>
 
   </main>

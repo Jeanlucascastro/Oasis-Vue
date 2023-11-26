@@ -6,12 +6,35 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <div class="page">
-    <header class="header">
-          <h2 class="margin">Oasis</h2>
-          <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/about/2">About</RouterLink>
-          <RouterLink to="/video/2">About2</RouterLink>
-    </header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <!-- <a class="navbar-brand router-link" href="#" >Oasis</a> -->
+        <RouterLink to="/" class="navbar-brand router-link">Oasis</RouterLink>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
+              <RouterLink to="/" class="router-link">Home</RouterLink>
+            </li>
+            <li class="nav-item">
+              <RouterLink to="/about/2" class="router-link">About</RouterLink>
+              <!-- <a class="nav-link" href="#">Features</a> -->
+            </li>
+            <li class="nav-item">
+              <!-- <a class="nav-link" href="#">Pricing</a> -->
+              <RouterLink to="/video/2" class="router-link">About2</RouterLink>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled router-link" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <RouterView />
   </div>
@@ -23,17 +46,19 @@ import HelloWorld from './components/HelloWorld.vue'
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 
 .header {
   line-height: 0.5;
-    max-height: 100vh;
-    gap: 18px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 100%;
+  max-height: 100vh;
+  gap: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .logo {
@@ -45,7 +70,9 @@ nav {
   width: 100%;
   font-size: 12px;
   text-align: center;
-  margin-top: 2rem;
+  background-color: black !important;
+  color: white;
+  /* margin-top: 2rem; */
 }
 
 nav a.router-link-exact-active {
@@ -66,30 +93,8 @@ nav a:first-of-type {
   border: 0;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    /* display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap; */
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.nav-item {
+  color: white;
 }
+
 </style>

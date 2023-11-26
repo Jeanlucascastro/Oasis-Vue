@@ -4,6 +4,11 @@
   color: white
 }
 
+.router-link {
+  text-decoration: none !important; /* Remove o sublinhado */
+  color: inherit !important; /* Mantém a cor padrão do texto */
+}
+
 .header {
   line-height: 0.5;
     max-height: 100vh;

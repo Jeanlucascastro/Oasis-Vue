@@ -20,10 +20,10 @@
 <script lang="ts">
 import { useRoute } from 'vue-router';
 import { ref } from 'vue';
-import router from '@/router';
+// import router from '@/router';
+import { useLoginMixin, type LoginMixin } from '../mixins/LoginMixin.js';
 
-
-
+const { checkLogin }: LoginMixin = useLoginMixin();
 export default {
 
   name: 'App',
@@ -46,18 +46,18 @@ export default {
   },
   methods: {
 
-    checkLogin() {
-      const token = localStorage.getItem('token-oasis')
+    // checkLogin() {
+    //   const token = localStorage.getItem('token-oasis')
       
 
-      if (!token) {
-        router.push('/')
-      }
-    }
+    //   if (!token) {
+    //     router.push('/')
+    //   }
+    // }
   },
   
   created() {
-    this.checkLogin()
+    checkLogin()
 },
 }
 
