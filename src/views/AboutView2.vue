@@ -4,7 +4,7 @@
     <h1>This is an about page ABOUT 2 {{ loop }}</h1>
 
     <div class="video-box-containder">
-      <VideoBox/>
+      <VideoBox :course-id="2"/>
     </div>
 
     <button></button>
