@@ -65,7 +65,7 @@ export default {
   
   created() {
     checkLogin()
-},
+  },
 }
 
 </script>

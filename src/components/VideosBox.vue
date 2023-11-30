@@ -3,7 +3,6 @@
 
   <button @click="getVideos(2)">Baixar</button>
 
-
   <div v-for="video of videos">
     {{ video.name }}
   </div>

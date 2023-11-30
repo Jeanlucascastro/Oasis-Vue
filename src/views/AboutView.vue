@@ -21,7 +21,10 @@
 import { YoutubeVue3 } from 'youtube-vue3'
 import { useRoute } from 'vue-router';
 import { ref } from 'vue';
+import { useLoginMixin, type LoginMixin } from '../mixins/LoginMixin.js';
 
+
+const { checkLogin }: LoginMixin = useLoginMixin();
 
 export default {
 
@@ -59,6 +62,10 @@ export default {
      console.log("## OnPlayed")
    },
  },
+
+ created() {
+    checkLogin()
+  },
 }
 
 </script>
