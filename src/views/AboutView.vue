@@ -23,7 +23,10 @@ import { ref  } from 'vue';
 import { useLoginMixin, type LoginMixin } from '../mixins/LoginMixin.js';
 import axios from 'axios'
 
-
+interface Video {
+  name: String,
+  url: String    
+}
 
 const { checkLogin }: LoginMixin = useLoginMixin();
 
@@ -32,7 +35,7 @@ export default {
  name: 'App',
  data() {
    return {
-    video: {} as any,
+    video: {} as Video,
      video_id: "kwpGBT-cQ-M",
      userName: localStorage.getItem('usuario-oasis') 
    }
@@ -41,17 +44,12 @@ export default {
   const route = useRoute();
   const loop = ref(1);
 
-
-  
   if (Array.isArray(route.params.id)) {
   } else {
     loop.value = Number(route.params.id);
   }
   
     return { loop };
-
-
-
  },
  components: {
    YoutubeVue3,
