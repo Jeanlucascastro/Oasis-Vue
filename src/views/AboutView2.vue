@@ -1,24 +1,20 @@
 'use strict'
 <template>
   <div class="about">
-    <h1>This is an about page ABOUT 2 {{ loop }}</h1>
-
     <div class="video-box-containder">
       <VideoBox :course-id="2"/>
     </div>
 
-    <button></button>
+    <!-- <button></button> -->
   </div>
 </template>
 
 <style>
-@media (min-width: 1024px) {
   .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+    width: 100%;
+    height: 1000px;
   }
-}
+
 </style>
 
 <script lang="ts">

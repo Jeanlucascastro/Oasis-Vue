@@ -9,6 +9,17 @@
   border-radius: 14px;
   width: 100%;
   height: 100%;
+  background-color: #151718;
+  color: aliceblue;
+}
+
+.titulo-box {
+  margin: 10px;
+}
+
+.video {
+  width: 100%;
+  margin: 1px 12px;
 }
 
 .router-link {

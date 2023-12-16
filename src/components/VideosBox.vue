@@ -1,16 +1,24 @@
 <template>
 <div class="global-box">
 
-  <button @click="getVideos(2)">Baixar</button>
+  <h3 class="titulo-box">Videos</h3>
 
-  <div v-for="video of videos">
-    {{ video.name }}
+  <div v-for="video of videos" class="video vstack gap-3">
+    <div class="p-2">
+      <RouterLink :to="'/about/' + video.id" class="router-link">{{ video.name }}</RouterLink>
+    </div>
   </div>
 
 </div>
-
-
 </template>
+
+
+<style>
+/* .video {
+  width: 100%;
+  margin: 1px 12px;
+} */
+</style>
 
 <script lang="ts">
 import axios from 'axios'
@@ -27,8 +35,21 @@ data() {
 props: {
     courseId: Number
 },
+
+watch: {
+    courseId(newCourseId) {
+      this.getVideos(newCourseId);
+    },
+  },
+
+  mounted() {
+    if (this.courseId) {
+      this.getVideos(this.courseId);
+    }
+  },
+
 methods: {
-  async getVideos(id: number) {
+  async getVideos(id: any) {
     const token = localStorage.getItem('token-oasis')
       try {
         await axios

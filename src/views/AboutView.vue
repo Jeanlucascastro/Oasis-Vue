@@ -2,25 +2,25 @@
 <template>
   <div class="about">
     <h1>This is an about page {{ loop }} {{ userName }}</h1>
-    <YoutubeVue3 ref="youtube" :videoid="video_id" :loop="loop" :width="480" :height="320"
+    <YoutubeVue3 ref="youtube" :videoid="video_id" :loop="0" :width="480" :height="320"
      @ended="onEnded" @paused="onPaused" @played="onPlayed"/>
   </div>
 </template>
 
 <style>
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   .about {
     min-height: 100vh;
     display: flex;
     align-items: center;
   }
-}
+} */
 </style>
 
 <script lang="ts">
 import { YoutubeVue3 } from 'youtube-vue3'
 import { useRoute } from 'vue-router';
-import { ref } from 'vue';
+import { ref  } from 'vue';
 import { useLoginMixin, type LoginMixin } from '../mixins/LoginMixin.js';
 
 
@@ -39,6 +39,7 @@ export default {
   const route = useRoute();
   const loop = ref(1);
 
+
   
   if (Array.isArray(route.params.id)) {
     // handle array case
@@ -46,11 +47,15 @@ export default {
     loop.value = Number(route.params.id);
   }
   
-  return { loop };
+    return { loop };
+
+
+
  },
  components: {
    YoutubeVue3,
  },
+
  methods: {
    onEnded() {
      console.log("## OnEnded")
