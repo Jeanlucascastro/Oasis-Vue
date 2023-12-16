@@ -1,7 +1,7 @@
 'use strict'
 <template>
   <div class="about">
-    <h1>Aula  {{ loop }} {{ userName }}</h1>
+    <h1>Aula - {{ video.name }}</h1>
     <YoutubeVue3 ref="youtube" :videoid="video.url" :loop="0" :width="480" :height="320"/>
   </div>
 </template>
@@ -44,7 +44,6 @@ export default {
 
   
   if (Array.isArray(route.params.id)) {
-    // handle array case
   } else {
     loop.value = Number(route.params.id);
   }
