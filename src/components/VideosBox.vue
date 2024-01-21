@@ -44,6 +44,7 @@ watch: {
 
   mounted() {
     if (this.courseId) {
+      console.log('COURSE ID ', this.courseId)
       this.getVideos(this.courseId);
     }
   },

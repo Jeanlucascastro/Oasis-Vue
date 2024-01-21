@@ -1,26 +1,34 @@
 'use strict'
 <template>
-  <div class="about">
-    <h1>Aula - {{ video.name }}</h1> ssssssssssssssssssssss
-    <YoutubeVue3 ref="youtube" :videoid="video.url" :loop="0" :width="480" :height="320"/>
+  <div class="dash">
+    <h1>Oasis Dashboard {{ video.name }}</h1>
   </div>
+  <div class="course-box-containder">
+      <CourseBox :company-id="2"/>
+    </div>
 </template>
 
 <style>
-  .about {
-    min-height: 100vh;
+  .dash {
+    width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     background-color: aqua !important;
+    margin-bottom: 100px;
+  }
+
+  .course-box-containder {
+    width: 80%;
   }
 </style>
 
 <script lang="ts">
-import { YoutubeVue3 } from 'youtube-vue3'
 import { useRoute } from 'vue-router';
 import { ref  } from 'vue';
 import { useLoginMixin, type LoginMixin } from '../mixins/LoginMixin.js';
-import axios from 'axios'
+import axios from 'axios';
+import CourseBox from '../components/CoursesBox.vue';
 
 interface Video {
   name: String,
@@ -51,7 +59,7 @@ export default {
     return { loop };
  },
  components: {
-   YoutubeVue3,
+  CourseBox
  },
 
  methods: {

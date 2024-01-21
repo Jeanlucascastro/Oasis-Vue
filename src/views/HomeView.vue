@@ -1,5 +1,4 @@
 <script lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
 import axios from 'axios'
 import router from '@/router';
 
@@ -16,7 +15,7 @@ export default {
       try {
         await axios
           .post(
-            'http://192.168.0.104:8080/auth/login',
+            'http://localhost:8080/auth/login',
             {
               login: this.email,
               password: this.password
@@ -32,7 +31,7 @@ export default {
           .then((usuario) => {
             localStorage.setItem('token-oasis', usuario.data.token)
             localStorage.setItem('usuario-oasis', usuario.data.user.id)
-            router.push('/about')
+            router.push('/dashboard')
             console.log('company-oasis', usuario.data)
           })
       } catch (error) {

@@ -1,28 +1,36 @@
 'use strict'
 <template>
-  <div class="about">
-    <h1>Aula - {{ video.name }}</h1> ssssssssssssssssssssss
-    <YoutubeVue3 ref="youtube" :videoid="video.url" :loop="0" :width="480" :height="320"/>
+  <div class="dash">
+    <h1>Curso: {{ course.name }}</h1>
   </div>
+    <div class="course-box-containder">
+      <VideoBox :course-id="loop"/>
+    </div>
 </template>
 
 <style>
-  .about {
-    min-height: 100vh;
+  .dash {
+    width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     background-color: aqua !important;
+    margin-bottom: 100px;
+  }
+
+  .course-box-containder {
+    width: 80%;
   }
 </style>
 
 <script lang="ts">
-import { YoutubeVue3 } from 'youtube-vue3'
 import { useRoute } from 'vue-router';
 import { ref  } from 'vue';
 import { useLoginMixin, type LoginMixin } from '../mixins/LoginMixin.js';
-import axios from 'axios'
+import axios from 'axios';
+import VideoBox from '@/components/VideosBox.vue';
 
-interface Video {
+interface Course {
   name: String,
   url: String    
 }
@@ -34,7 +42,7 @@ export default {
  name: 'App',
  data() {
    return {
-    video: {} as Video,
+    course: {} as Course,
      video_id: "kwpGBT-cQ-M",
      userName: localStorage.getItem('usuario-oasis') 
    }
@@ -51,16 +59,20 @@ export default {
     return { loop };
  },
  components: {
-   YoutubeVue3,
- },
+    VideoBox
+},
+
+ props: {
+    courseId: Number
+  },
 
  methods: {
-  async getVideos(id: any) {
+  async getCourse(id: any) {
     const token = localStorage.getItem('token-oasis')
       try {
         await axios
           .get(
-            'http://localhost:8080/video/' + id,
+            'http://localhost:8080/course/' + id,
             {
               headers: {
                 'Content-Type': 'application/json',
@@ -70,10 +82,10 @@ export default {
               }
             }
           )
-          .then((video) => {
-            this.video = video.data;
-            console.log('videos.data', video.data)
-            console.log('this.videos', video.data)
+          .then((course) => {
+            this.course = course.data;
+            console.log('videos.data', course.data)
+            console.log('this.videos', course.data)
           })
       } catch (error) {
         console.error('Error fetching data:', error)
@@ -83,7 +95,7 @@ export default {
 
  created() {
     checkLogin()
-    this.getVideos(this.loop)
+    this.getCourse(this.loop)
   },
 }
 
